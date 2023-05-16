@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateUserTypesTable extends Migration
 {
+    private $table = 'user_types';
     /**
      * Run the migrations.
      *
@@ -13,24 +14,13 @@ class CreateUserTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_types', function (Blueprint $table) {
-            $table->tinyIncrements('id');
+        Schema::create($this->table, function (Blueprint $table) {
+            $table->increments('id');
             $table->string('title')->unique();
             $table->string('description')->nullable();
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
-
-        DB::table('user_types')->insert([
-            [
-                'title' => 'admin',
-                'description' => 'Administrator',
-            ],
-            [
-                'title' => 'user',
-                'description' => 'Customer'
-            ]
-        ]);
     }
 
     /**
@@ -40,6 +30,6 @@ class CreateUserTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_types');
+        Schema::dropIfExists($this->table);
     }
 }
