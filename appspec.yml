@@ -5,7 +5,7 @@ files:
     destination: /home/ubuntu/questionnaire/www
 hooks:
   BeforeInstall:
-  AfterInstall:
-    - location: deployScripts/run-env-preparation.sh
-  ApplicationStart:
-    - location: deployScripts/run-laravel.sh
+#  AfterInstall:
+#    - location: deployScripts/run-env-preparation.sh
+#  ApplicationStart:
+#    - location: deployScripts/run-laravel.sh
