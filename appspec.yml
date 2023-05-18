@@ -6,6 +6,6 @@ files:
 hooks:
   BeforeInstall:
   AfterInstall:
-    - location: deployScripts/run-ebv-preparation.sh
+    - location: deployScripts/run-env-preparation.sh
   ApplicationStart:
     - location: deployScripts/run-laravel.sh
