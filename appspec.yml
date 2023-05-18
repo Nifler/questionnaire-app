@@ -1,0 +1,11 @@
+version: 1.0
+os: linux
+files:
+  - source: /
+    destination: ./www
+hooks:
+  BeforeInstall:
+  AfterInstall:
+    - location: deployScripts/run-ebv-preparation.sh
+  ApplicationStart:
+    - location: deployScripts/run-laravel.sh
