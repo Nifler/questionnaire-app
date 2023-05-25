@@ -14,3 +14,4 @@ use App\Http\Controllers\LifeCheckController;
 |
 */
 Route::get('/check', [LifeCheckController::class, 'check']);
+Route::resource('/question_type', \App\Http\Controllers\QuestionTypeController::class);
