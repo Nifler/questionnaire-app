@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LifeCheckController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,4 +14,4 @@ use App\Http\Controllers\LifeCheckController;
 |
 */
 Route::get('/check', [LifeCheckController::class, 'check']);
-Route::resource('/question_type', \App\Http\Controllers\QuestionTypeController::class);
+Route::resource('/question_type', \App\Http\Controllers\QuestionType\QuestionTypeController::class);
