@@ -2,18 +2,14 @@
 
 namespace App\Providers;
 
-use App\Repository\QuestionType\MysqlRepository as QuestionTypeMysqlRepository;
-use App\Repository\QuestionType\RepositoryInterface as QuestionTypeRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
-     *
-     * @return void
      */
-    public function register()
+    public function register(): void
     {
         /**
          * Repositories
@@ -23,10 +19,8 @@ class AppServiceProvider extends ServiceProvider
 
     /**
      * Bootstrap any application services.
-     *
-     * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         //
     }
