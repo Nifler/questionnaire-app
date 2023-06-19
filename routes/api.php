@@ -13,5 +13,18 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+
+
+Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
+
+/**
+ * Protected api routes
+ */
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::resource('/question_type', \App\Http\Controllers\QuestionType\QuestionTypeController::class);
+});
+
+
+
 Route::get('/check', [LifeCheckController::class, 'check']);
-Route::resource('/question_type', \App\Http\Controllers\QuestionType\QuestionTypeController::class);
+
