@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repository\QuestionType\MysqlRepository as QuestionTypeMysqlRepository;
+use App\Repository\QuestionType\RepositoryInterface as QuestionTypeRepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
