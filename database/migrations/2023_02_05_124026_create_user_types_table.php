@@ -21,6 +21,12 @@ class CreateUserTypesTable extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
         });
+
+        \Illuminate\Support\Facades\DB::table($this->table)->insert([
+            'id' => 1,
+            'title' => 'guest',
+            'description' => 'Guest user with minimum permission'
+        ]);
     }
 
     /**
