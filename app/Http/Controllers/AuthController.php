@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
+    public function register(Request $request): Response
     {
         $fields = $request->validate([
             'name'      => 'required|string',
@@ -32,5 +34,41 @@ class AuthController extends Controller
         ];
 
         return response($response, 201);
+    }
+
+    public function login(Request $request): Response
+    {
+        $fields = $request->validate([
+            'email'     => 'required|email|exists:users,email',
+            'password'  => 'required|string'
+        ]);
+
+        /**
+         * @var User $user
+         */
+        $user = User::where('email', $fields['email'])->first();
+
+        if (!$user || !Hash::check($fields['password'], $user->password)) {
+            return response(
+                ['message' => 'Wrong email or password'],
+                401
+            );
+        }
+
+        $token = $user->createToken('myAppToken')->plainTextToken;
+
+        $response = [
+            'user' => $user,
+            'token' => $token
+        ];
+
+        return response($response, 201);
+    }
+
+    public function logout(): Response
+    {
+        auth()->user()->tokens()->delete();
+
+        return response(['message' => 'All tokens is removed.'], 201);
     }
 }
