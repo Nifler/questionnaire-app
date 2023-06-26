@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\LifeCheckController;
+use App\Http\Controllers\Api\LifeCheckController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,17 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 
 /** Auth */
-Route::post('/register', [\App\Http\Controllers\AuthController::class, 'register']);
-Route::post('/login', [\App\Http\Controllers\AuthController::class, 'login']);
+Route::post('/register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
+Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
 
 /**
  * Protected api routes
  */
 Route::group(['middleware' => ['auth:sanctum']], function () {
     /** Auth */
-    Route::post('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);
+    Route::post('/logout', [\App\Http\Controllers\Api\AuthController::class, 'logout']);
 
-    Route::resource('/question_type', \App\Http\Controllers\QuestionType\QuestionTypeController::class);
+    Route::resource('/question_type', \App\Http\Controllers\Api\QuestionType\QuestionTypeController::class);
 });
 
 

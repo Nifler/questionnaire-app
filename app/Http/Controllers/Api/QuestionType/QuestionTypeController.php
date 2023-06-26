@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\QuestionType;
+namespace App\Http\Controllers\Api\QuestionType;
 
+use App\Http\Controllers\Api\QuestionType\Requests\StoreQuestionTypeRequest;
+use App\Http\Controllers\Api\QuestionType\Requests\UpdateQuestionTypeRequest;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\QuestionType\Requests\StoreQuestionTypeRequest;
-use App\Http\Controllers\QuestionType\Requests\UpdateQuestionTypeRequest;
 use App\Models\QuestionType;
 use App\Repository\QuestionType\RepositoryInterface;
 use Illuminate\Http\Response;
@@ -34,7 +34,7 @@ class QuestionTypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Controllers\QuestionType\Requests\StoreQuestionTypeRequest  $request
+     * @param  \App\Http\Controllers\Api\QuestionType\Requests\StoreQuestionTypeRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreQuestionTypeRequest $request)
@@ -56,7 +56,7 @@ class QuestionTypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Controllers\QuestionType\Requests\UpdateQuestionTypeRequest  $request
+     * @param  \App\Http\Controllers\Api\QuestionType\Requests\UpdateQuestionTypeRequest  $request
      * @param  \App\Models\QuestionType  $questionType
      * @return \Illuminate\Http\Response
      */
