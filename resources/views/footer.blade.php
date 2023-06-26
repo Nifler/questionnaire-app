@@ -1,4 +1,4 @@
-<footer class="footer text-center">
+<footer class="footer navbar-fixed-bottom text-center">
     <div class="container">
         <div class="row">
             <!-- Footer Location-->
@@ -28,8 +28,8 @@
                 </p>
             </div>
         </div>
+        <div class="copyright py-4 text-center text-white fixed-bottom">
+            <div class="container"><small>Copyright &copy; VP Team 2023</small></div>
+        </div>
     </div>
 </footer>
-<div class="copyright py-4 text-center text-white">
-    <div class="container"><small>Copyright &copy; Your Website 2023</small></div>
-</div>
