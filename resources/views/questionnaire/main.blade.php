@@ -16,6 +16,8 @@
 @include('header')
 @include('questionnaire.question')
 @include('footer')
+<script src="{{asset('js/jquery-3.7.0.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
+<script src="{{asset('js/question.js')}}"></script>
 </body>
 </html>
