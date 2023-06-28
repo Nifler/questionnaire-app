@@ -6,7 +6,7 @@ use App\Http\Controllers\Api\QuestionType\Requests\StoreQuestionTypeRequest;
 use App\Http\Controllers\Api\QuestionType\Requests\UpdateQuestionTypeRequest;
 use App\Http\Controllers\Controller;
 use App\Models\QuestionType;
-use App\Repository\QuestionType\RepositoryInterface;
+use App\Repository\Question\RepositoryInterface;
 use Illuminate\Http\Response;
 
 class QuestionController extends Controller
