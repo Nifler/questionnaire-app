@@ -20,6 +20,7 @@ class AppServiceProvider extends ServiceProvider
          */
         $this->app->bind(QuestionTypeRepositoryInterface::class, QuestionTypeMysqlRepository::class);
         $this->app->bind(RepositoryInterface::class, MysqlRepository::class);
+        $this->app->bind(\App\Repository\Poll\RepositoryInterface::class, \App\Repository\Poll\MysqlRepository::class);
     }
 
     /**

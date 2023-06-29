@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\QuestionnaireController;
+use App\Http\Controllers\PollController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +19,4 @@ Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/login', [HomeController::class, 'index']);
 
-Route::get('/questionnaire/{id}', [QuestionnaireController::class, 'show']);
+Route::get('/poll/{id}', [PollController::class, 'show']);
