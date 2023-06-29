@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api\QuestionType;
+namespace App\Http\Controllers\Api\Question;
 
 use App\Http\Controllers\Api\QuestionType\Requests\StoreQuestionTypeRequest;
 use App\Http\Controllers\Api\QuestionType\Requests\UpdateQuestionTypeRequest;
 use App\Http\Controllers\Controller;
 use App\Models\QuestionType;
 use App\Repository\Question\RepositoryInterface;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class QuestionController extends Controller
@@ -22,8 +23,10 @@ class QuestionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Response $response)
+    public function index(Request $request, Response $response)
     {
+        $poll = $request->input('poll');
+        $withFilter = $request->input('withFilter');
         $res = $this->repository->getAll();
 
         $response->setContent($res);

@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 /** Auth */
 Route::post('/register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
 Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
-Route::resource('/questions', \App\Http\Controllers\Api\QuestionType\QuestionController::class);
 
 /**
  * Protected api routes
@@ -28,6 +27,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [\App\Http\Controllers\Api\AuthController::class, 'logout']);
 
     Route::resource('/question_types', \App\Http\Controllers\Api\QuestionType\QuestionTypeController::class);
+    Route::resource('/questions', \App\Http\Controllers\Api\Question\QuestionController::class);
+    Route::post('/responds', [\App\Http\Controllers\Api\Respond\RespondController::class, 'store']);
 });
 
 
