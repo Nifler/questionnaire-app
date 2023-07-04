@@ -7,6 +7,6 @@ use Illuminate\Support\Collection;
 
 interface RepositoryInterface
 {
-    public function getAll(): Collection;
+    public function getAll(?array $where): Collection;
     public function getOne(int $id): Poll;
 }

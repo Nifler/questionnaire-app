@@ -7,16 +7,17 @@ use App\Http\Controllers\Api\QuestionType\Requests\UpdateQuestionTypeRequest;
 use App\Http\Controllers\Controller;
 use App\Models\QuestionType;
 use App\Repository\Question\RepositoryInterface;
+use App\Services\Poll\PollService;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 
 class QuestionController extends Controller
 {
-    private $repository;
 
-    public function __construct(RepositoryInterface $repository)
-    {
-        $this->repository = $repository;
+    public function __construct(
+        private PollService $pollService
+    ) {
     }
     /**
      * Display a listing of the resource.
@@ -25,18 +26,13 @@ class QuestionController extends Controller
      */
     public function index(Request $request, Response $response)
     {
-        $poll = $request->input('poll');
-        $withFilter = $request->input('withConditional');
-        $res = $this->repository->getAll();
+        if ($request->input('next') && $request->input('pollId')) {
+            return $response->setContent(
+                $this->pollService->getNextQuestion($request->input('pollId'))
+            );
+        }
 
-        $response->setContent($res);
-
-        return $response;
-    }
-
-    private function getNextQuestion($pollId, $userId)
-    {
-
+        return $response->setContent($this->pollService->getQuestions($request->input('pollId')));
     }
 
     /**

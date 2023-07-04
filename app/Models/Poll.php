@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Poll extends Model
 {
-    public function questions(): HasMany
+    public function questions()
     {
-        return $this->hasMany(Question::class);
+        return $this->belongsToMany(Question::class)
+            ->withPivot('order');
     }
 }
