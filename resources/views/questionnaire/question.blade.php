@@ -2,6 +2,7 @@
     <div class="row justify-content-around">
         <div class="col-12"><h2>{{$poll->title}}</h2></div>
         <div class="col-12"><h4>{{$poll->description}}</h4></div>
+        <div class="col-12">{{$user_id}}</div>
     </div>
     <div class="row justify-content-around">
         <div id="question-title" class="col-12">

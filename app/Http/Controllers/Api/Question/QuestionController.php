@@ -26,12 +26,17 @@ class QuestionController extends Controller
     public function index(Request $request, Response $response)
     {
         $poll = $request->input('poll');
-        $withFilter = $request->input('withFilter');
+        $withFilter = $request->input('withConditional');
         $res = $this->repository->getAll();
 
         $response->setContent($res);
 
         return $response;
+    }
+
+    private function getNextQuestion($pollId, $userId)
+    {
+
     }
 
     /**

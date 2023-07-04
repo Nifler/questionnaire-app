@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\Respond;
 use App\Http\Controllers\Api\Respond\Requests\StoreRespondRequest;
 use App\Http\Controllers\Controller;
 use App\Repository\Respond\RepositoryInterface;
+use Illuminate\Support\Facades\Auth;
 
 class RespondController extends Controller
 {
@@ -17,6 +18,15 @@ class RespondController extends Controller
 
     public function store(StoreRespondRequest $request)
     {
-        dd('end');
+        $userId = Auth::user()->getAuthIdentifier();
+        $respond = $this->repository->createOrUpdate(
+            $userId,
+            $request->validated('question_type_id'),
+            $request->validated('poll_id'),
+            $request->validated('question_id'),
+            $request->validated('answer_id')
+        );
+
+        return response($respond);
     }
 }

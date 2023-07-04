@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Respond\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class StoreRespondRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class StoreRespondRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -24,10 +25,10 @@ class StoreRespondRequest extends FormRequest
     public function rules()
     {
         return [
-            'poll_id' => 'required|int|exist:polls,id',
-            'question_id' => 'required|int|exist:questions,id',
-            'question_type_id' => 'required|int|exist:question_types,id',
-            'answer_id' => 'required|int|exist:answers,id',
+            'poll_id' => 'required|int|exists:polls,id',
+            'question_id' => 'required|int|exists:questions,id',
+            'question_type_id' => 'required|int|exists:question_types,id',
+            'answer_id' => 'required|int|exists:answers,id',
         ];
     }
 }

@@ -17,4 +17,34 @@ class MysqlRepository implements RepositoryInterface
     {
         return Respond::find($id);
     }
+
+    public function createOrUpdate(
+        int $userId,
+        int $questionTypeId,
+        int $pollId,
+        int $questionId,
+        int $answerId
+    ): Respond {
+        $respond = Respond::query()
+            ->where('user_id', $userId)
+            ->where('question_type_id', $questionTypeId)
+            ->where('poll_id', $pollId)
+            ->where('question_id', $questionId)
+            ->first();
+
+        if (empty($respond)) {
+            $respond = Respond::create([
+                'user_id' => $userId,
+                'question_type_id' => $questionTypeId,
+                'poll_id' => $pollId,
+                'question_id' => $questionId,
+            ]);
+        }
+
+        $respond->answer_id = $answerId;
+
+        $respond->save();
+
+        return $respond;
+    }
 }

@@ -9,6 +9,14 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 class Respond extends Model
 {
 
+    protected $fillable = [
+        'user_id',
+        'question_type_id',
+        'poll_id',
+        'question_id',
+        'answer_id',
+    ];
+
     public function poll(): HasOne
     {
         return $this->hasOne(Poll::class);
