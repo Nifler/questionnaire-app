@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Repository\Poll\RepositoryInterface as PollRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class PollService
 {
@@ -16,13 +17,23 @@ class PollService
 
     public function getNextQuestion(int $pollId): Collection
     {
-        $questions = $this->pollRepository->getOne($pollId)->questions()->get();
+        $userId = Auth::user()->getAuthIdentifier();
 
+        $questions = $this->pollRepository->getPollEmptyQuestions($pollId);
+
+
+        dd(12321);
+$a='';
         foreach ($questions as $question) {
-            dd($question->pivot->order);
+            $a .= ($question->pivot->order) . ' ';
         }
 
-        dd('end');
+        dd($a);
+    }
+
+    private function checkQuestionCondition()
+    {
+
     }
     public function getQuestions(?int $pollId): Collection
     {
