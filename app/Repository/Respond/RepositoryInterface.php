@@ -9,4 +9,6 @@ interface RepositoryInterface
 {
     public function getAll(): Collection;
     public function getOne(int $id): Poll;
+
+    public function getQuestionsAnswersResponds(array $data): Collection;
 }

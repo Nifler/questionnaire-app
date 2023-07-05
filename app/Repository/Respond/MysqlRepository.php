@@ -5,6 +5,7 @@ namespace App\Repository\Respond;
 use App\Models\Poll;
 use App\Models\Respond;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 
 class MysqlRepository implements RepositoryInterface
 {
@@ -46,5 +47,20 @@ class MysqlRepository implements RepositoryInterface
         $respond->save();
 
         return $respond;
+    }
+
+    public function getQuestionsAnswersResponds(array $data): Collection
+    {
+        $query = Respond::query();
+        $userId = Auth::user()->getAuthIdentifier();
+        foreach ($data as $questionId => $answerId) {
+            $query->orWhere([
+                ['question_id', '=', $questionId],
+                ['answer_id', '=', $answerId],
+                ['user_id', '=', $userId]
+            ]);
+        }
+
+        return $query->get();
     }
 }

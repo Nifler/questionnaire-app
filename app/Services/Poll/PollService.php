@@ -3,40 +3,79 @@
 namespace App\Services\Poll;
 
 use App\Models\Question;
-use App\Models\User;
 use App\Repository\Poll\RepositoryInterface as PollRepositoryInterface;
-use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
+use App\Repository\QuestionCondition\RepositoryInterface as QuestionConditionRepositoryInterface;
+use App\Repository\Respond\RepositoryInterface as RespondRepositoryInterface;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class PollService
 {
-    public function __construct(private PollRepositoryInterface $pollRepository)
-    {
+    public function __construct(
+        private PollRepositoryInterface $pollRepository,
+        private QuestionConditionRepositoryInterface $conditionRepository,
+        private RespondRepositoryInterface $respondRepository
+    ) {
     }
 
-    public function getNextQuestion(int $pollId): Collection
+    public function getNextQuestion(int $pollId): Question
     {
-        $userId = Auth::user()->getAuthIdentifier();
-
         $questions = $this->pollRepository->getPollEmptyQuestions($pollId);
 
-
-        dd(12321);
-$a='';
         foreach ($questions as $question) {
-            $a .= ($question->pivot->order) . ' ';
+
+            if ($this->checkQuestionCondition($question->id, $pollId)) {
+                return $question;
+            }
         }
 
-        dd($a);
+        throw new \Exception('no more questions');
     }
 
-    private function checkQuestionCondition()
+    private function checkQuestionCondition(int $questionId, int $pollId): bool
     {
+        try {
+            $condition = $this->conditionRepository->getPollMessageCondition($pollId,$questionId);
+        } catch (ModelNotFoundException $e) {
+            return true;
+        }
 
+        $conditions = json_decode($condition->condition);
+
+        $result = true;
+
+        if (!empty($conditions->required)) {
+            $result = $this->checkRequiredCondition((array) $conditions->required);
+        }
+
+        if (!empty($conditions->prohibited)) {
+            $result = $result && $this->checkProhibitedCondition((array) $conditions->prohibited);
+        }
+
+        if (!empty($conditions->sufficient)) {
+            $result = $result && $this->checkSufficientCondition((array) $conditions->sufficient);
+        }
+
+        return $result;
     }
-    public function getQuestions(?int $pollId): Collection
+
+    private function checkRequiredCondition(array $rules): bool
     {
-        dd(__LINE__, __FILE__);
+        $answers = $this->respondRepository->getQuestionsAnswersResponds($rules);
+
+        return $answers->count() === count($rules);
+    }
+
+    private function checkProhibitedCondition(array $rules): bool
+    {
+        $answers = $this->respondRepository->getQuestionsAnswersResponds($rules);
+
+        return (bool) $answers->count();
+    }
+
+    private function checkSufficientCondition(array $rules): bool
+    {
+        $answers = $this->respondRepository->getQuestionsAnswersResponds($rules);
+
+        return !$answers->count();
     }
 }

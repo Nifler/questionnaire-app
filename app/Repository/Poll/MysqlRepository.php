@@ -9,18 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class MysqlRepository implements RepositoryInterface
 {
-    public function getAll(?array $where): Collection
+    public function getAll(): Collection
     {
-        dd('Poll');
-        $request = Poll::query();
-
-        if (!empty($where)) {
-            array_map(function($key, $value) use (&$request) {
-                $request->where($key, $value);
-            }, array_keys($where), $where);
-        }
-
-        dd($request->get());
         return Poll::all();
     }
 
@@ -29,9 +19,9 @@ class MysqlRepository implements RepositoryInterface
         return Poll::find($id);
     }
 
-    public function getPollEmptyQuestions(int $pollId)
+    public function getPollEmptyQuestions(int $pollId): Collection
     {
-        $questions = $this
+        return $this
             ->getOne($pollId)
             ->questions()
             ->leftJoin('responds', function (JoinClause $join) use ($pollId) {
@@ -42,7 +32,5 @@ class MysqlRepository implements RepositoryInterface
             ->whereNull('responds.id')
             ->orderBy('order', 'asc')
             ->get();
-
-        dd($questions);
     }
 }
