@@ -17,4 +17,11 @@ class MysqlRepository implements RepositoryInterface
     {
         return Answer::find($id);
     }
+
+    public function getAllForQuestion(int $questionId): Collection
+    {
+        $question = Question::find($questionId);
+
+        return $question->answers;
+    }
 }

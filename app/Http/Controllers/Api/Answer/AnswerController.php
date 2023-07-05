@@ -1,20 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\Api\Question;
+namespace App\Http\Controllers\Api\Answer;
 
 use App\Http\Controllers\Api\QuestionType\Requests\StoreQuestionTypeRequest;
 use App\Http\Controllers\Api\QuestionType\Requests\UpdateQuestionTypeRequest;
 use App\Http\Controllers\Controller;
 use App\Models\QuestionType;
-use App\Services\Poll\PollService;
+use App\Repository\Answer\RepositoryInterface as AnswerRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class QuestionController extends Controller
+class AnswerController extends Controller
 {
 
     public function __construct(
-        private PollService $pollService
+        private AnswerRepositoryInterface $answerRepository
     ) {
     }
     /**
@@ -24,10 +24,10 @@ class QuestionController extends Controller
      */
     public function index(Request $request, Response $response)
     {
-        if ($request->input('next') && $request->input('pollId')) {
-            $data = [$this->pollService->getNextQuestion($request->input('pollId'))];
+        if ($request->input('questionId')) {
+            $data = $this->answerRepository->getAllForQuestion($request->input('questionId'));
         } else {
-            $data = $this->pollService->getQuestions($request->input('pollId'));
+            $data = $this->answerRepository->getAll();
         }
 
         return $response->setContent([

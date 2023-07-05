@@ -11,4 +11,6 @@ interface RepositoryInterface
     public function getAll(): Collection;
 
     public function getOne(int $id): Answer;
+
+    public function getAllForQuestion(int $questionId): Collection;
 }

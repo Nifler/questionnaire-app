@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
@@ -13,8 +14,8 @@ class Question extends Model
         return $this->hasOne(QuestionType::class);
     }
 
-    public function answers(): HasMany
+    public function answers(): BelongsToMany
     {
-        return $this->hasMany(Answer::class);
+        return $this->belongsToMany(Answer::class, 'question_answer');
     }
 }

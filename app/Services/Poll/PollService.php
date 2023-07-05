@@ -7,6 +7,7 @@ use App\Repository\Poll\RepositoryInterface as PollRepositoryInterface;
 use App\Repository\QuestionCondition\RepositoryInterface as QuestionConditionRepositoryInterface;
 use App\Repository\Respond\RepositoryInterface as RespondRepositoryInterface;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Collection;
 
 class PollService
 {
@@ -15,6 +16,11 @@ class PollService
         private QuestionConditionRepositoryInterface $conditionRepository,
         private RespondRepositoryInterface $respondRepository
     ) {
+    }
+
+    public function getQuestions(int $pollId): Collection
+    {
+        return $this->pollRepository->getPollQuestions($pollId);
     }
 
     public function getNextQuestion(int $pollId): Question

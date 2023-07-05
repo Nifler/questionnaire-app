@@ -26,10 +26,19 @@ class MysqlRepository implements RepositoryInterface
             ->questions()
             ->leftJoin('responds', function (JoinClause $join) use ($pollId) {
                 $join->on('responds.question_id', '=', 'questions.id')
-                ->where('responds.user_id', Auth::user()->getAuthIdentifier())
-                ->where('responds.poll_id', $pollId);
+                    ->where('responds.user_id', Auth::user()->getAuthIdentifier())
+                    ->where('responds.poll_id', $pollId);
             })
             ->whereNull('responds.id')
+            ->orderBy('order', 'asc')
+            ->get();
+    }
+
+    public function getPollQuestions(int $pollId): Collection
+    {
+        return $this
+            ->getOne($pollId)
+            ->questions()
             ->orderBy('order', 'asc')
             ->get();
     }

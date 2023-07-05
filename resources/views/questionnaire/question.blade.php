@@ -5,6 +5,8 @@
         <div class="col-12">{{$user_id}}</div>
     </div>
     <div class="row justify-content-around">
+        <div id="error" class="col-12">
+        </div>
         <div id="question-title" class="col-12">
         </div>
         <div id="question-text" class="col-12">

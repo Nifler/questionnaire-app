@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::resource('/question_types', \App\Http\Controllers\Api\QuestionType\QuestionTypeController::class);
     Route::resource('/questions', \App\Http\Controllers\Api\Question\QuestionController::class);
+    Route::resource('/answers', \App\Http\Controllers\Api\Answer\AnswerController::class);
     Route::post('/responds', [\App\Http\Controllers\Api\Respond\RespondController::class, 'store']);
 });
 
