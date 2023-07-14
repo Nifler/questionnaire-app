@@ -15,8 +15,12 @@ use App\Http\Controllers\PollController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/login', [HomeController::class, 'index']);
 
 Route::get('/poll/{id}', [PollController::class, 'show']);
+
+Route::post('/logout', [\App\Http\Controllers\Api\AuthController::class, 'logout']);
+
+Route::get('/logout', [\App\Http\Controllers\AuthController::class, 'logout']);

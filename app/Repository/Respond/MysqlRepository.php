@@ -39,10 +39,11 @@ class MysqlRepository implements RepositoryInterface
                 'question_type_id' => $questionTypeId,
                 'poll_id' => $pollId,
                 'question_id' => $questionId,
+                'answer_id' => $answerId,
             ]);
+        } else {
+            $respond->answer_id = $answerId;
         }
-
-        $respond->answer_id = $answerId;
 
         $respond->save();
 

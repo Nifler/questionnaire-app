@@ -72,4 +72,5 @@ class AuthController extends Controller
 
         return response(['message' => 'All tokens is removed.'], 201);
     }
+
 }
