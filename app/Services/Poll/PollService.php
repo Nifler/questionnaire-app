@@ -2,6 +2,7 @@
 
 namespace App\Services\Poll;
 
+use App\Exceptions\NoModelException;
 use App\Models\Question;
 use App\Repository\Poll\RepositoryInterface as PollRepositoryInterface;
 use App\Repository\QuestionCondition\RepositoryInterface as QuestionConditionRepositoryInterface;
@@ -34,7 +35,7 @@ class PollService
             }
         }
 
-        throw new \Exception('no more questions');
+        throw new NoModelException('no more questions');
     }
 
     private function checkQuestionCondition(int $questionId, int $pollId): bool
@@ -49,15 +50,15 @@ class PollService
 
         $result = true;
 
-        if (!empty($conditions->required)) {
+        if (!empty((array) $conditions->required)) {
             $result = $this->checkRequiredCondition((array) $conditions->required);
         }
 
-        if (!empty($conditions->prohibited)) {
+        if (!empty((array) $conditions->prohibited)) {
             $result = $result && $this->checkProhibitedCondition((array) $conditions->prohibited);
         }
 
-        if (!empty($conditions->sufficient)) {
+        if (!empty((array) $conditions->sufficient)) {
             $result = $result && $this->checkSufficientCondition((array) $conditions->sufficient);
         }
 

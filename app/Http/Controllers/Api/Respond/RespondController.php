@@ -19,6 +19,7 @@ class RespondController extends Controller
     public function store(StoreRespondRequest $request)
     {
         $userId = Auth::user()->getAuthIdentifier();
+        //TODO check question_type for question and answer
         $respond = $this->repository->createOrUpdate(
             $userId,
             $request->validated('question_type_id'),

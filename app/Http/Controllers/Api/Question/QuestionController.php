@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Question;
 
+use App\Exceptions\NoModelException;
 use App\Http\Controllers\Api\QuestionType\Requests\StoreQuestionTypeRequest;
 use App\Http\Controllers\Api\QuestionType\Requests\UpdateQuestionTypeRequest;
 use App\Http\Controllers\Controller;
@@ -24,11 +25,20 @@ class QuestionController extends Controller
      */
     public function index(Request $request, Response $response)
     {
-        if ($request->input('next') && $request->input('pollId')) {
-            $data = [$this->pollService->getNextQuestion($request->input('pollId'))];
-        } else {
-            $data = $this->pollService->getQuestions($request->input('pollId'));
+        try {
+            if ($request->input('next') && $request->input('pollId')) {
+                $data = [$this->pollService->getNextQuestion($request->input('pollId'))];
+            } else {
+                $data = $this->pollService->getQuestions($request->input('pollId'));
+            }
+        } catch (NoModelException $e) {
+            return $response->setContent([
+                'success' => true,
+                'message' => $e->getMessage(),
+                'data' => []
+            ]);
         }
+
 
         return $response->setContent([
             'success' => true,
