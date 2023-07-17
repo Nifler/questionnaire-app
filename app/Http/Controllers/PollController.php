@@ -39,4 +39,20 @@ class PollController extends BaseController
 
         return view('questionnaire.main', $data);
     }
+
+    public function finished(Request $request, $id)
+    {
+        if (!Auth::check()) {
+            return redirect('/poll/' . $id);
+        }
+
+        $poll = $this->repository->getOne($id);
+
+        $data = [
+            'user_id' => Auth::user()->getAuthIdentifier(),
+            'poll' => $poll,
+        ];
+
+        return view('questionnaire.finished', $data);
+    }
 }

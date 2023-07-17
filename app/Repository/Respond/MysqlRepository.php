@@ -54,12 +54,14 @@ class MysqlRepository implements RepositoryInterface
     {
         $query = Respond::query();
         $userId = Auth::user()->getAuthIdentifier();
-        foreach ($data as $questionId => $answerId) {
-            $query->orWhere([
-                ['question_id', '=', $questionId],
-                ['answer_id', '=', $answerId],
-                ['user_id', '=', $userId]
-            ]);
+        foreach ($data as $questionId => $answerIds) {
+            foreach ($answerIds as $answerId) {
+                $query->orWhere([
+                    ['question_id', '=', $questionId],
+                    ['answer_id', '=', $answerId],
+                    ['user_id', '=', $userId]
+                ]);
+            }
         }
 
         return $query->get();

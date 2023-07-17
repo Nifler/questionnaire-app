@@ -14,17 +14,21 @@ function drawQuestion() {
             $('#question-inputs').empty();
             $('#error').empty();
             if (data.success) {
-                var question = data.data[0]
-                var body = $("body");
 
-                body.data( "question_id", question.id );
-                body.data( "question_type_id", question.question_type_id );
-                body.data( "poll_id", pollId );
-
-                title.append(question.title);
-                text.append(question.description);
-
-                drawAnswers(question.id);
+                if (data.data[0] === undefined) {
+                    window.location.replace($(location).attr("origin") + '/poll/' + pollId + '/finished');
+                }
+                // var question = data.data[0]
+                // var body = $("body");
+                //
+                // body.data( "question_id", question.id );
+                // body.data( "question_type_id", question.question_type_id );
+                // body.data( "poll_id", pollId );
+                //
+                // title.append(question.title);
+                // text.append(question.description);
+                //
+                // drawAnswers(question.id);
 
             } else {
                 $( "#error" ).append(data.message);
