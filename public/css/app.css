@@ -11049,3 +11049,8 @@ html {
     margin-top: 104px;
     min-height: 600px;
 }
+
+.login {
+    margin-top: 75px;
+    max-width: 576px;
+}

@@ -17,7 +17,7 @@ use App\Http\Controllers\PollController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/login', [HomeController::class, 'index']);
+Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login']);
 
 Route::get('/poll/{id}/finished', [PollController::class, 'finished']);
 
