@@ -2,6 +2,7 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\AdminGate;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -44,8 +45,8 @@ class Kernel extends HttpKernel
         ],
         'admin' => [
             \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-            \Illuminate\Routing\Middleware\ThrottleRequests::class.':admin',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
+            AdminGate::class,
         ],
     ];
 
