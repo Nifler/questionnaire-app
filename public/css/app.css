@@ -11054,3 +11054,7 @@ html {
     margin-top: 75px;
     max-width: 576px;
 }
+
+.error-message {
+    color: red;
+}

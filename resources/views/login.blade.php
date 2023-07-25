@@ -4,24 +4,24 @@
     <section class="page-section">
         <div class="container login">
             <div class="row">
-                <h2>Login</h2>
+                <h2>Login</h2>{{$userId}}
+                <p id="error-message" class="error-message"></p>
             </div>
-            <form>
-                <!-- Email input -->
+            <form class="login-form">
                 <div class="form-outline mb-4">
-                    <input type="email" id="form2Example1" class="form-control" />
-                    <label class="form-label" for="form2Example1">Email address</label>
+                    <input type="email" id="email" class="form-control" />
+                    <label class="form-label" for="email">Email address <span class="error-message"></span></label>
                 </div>
-
-                <!-- Password input -->
                 <div class="form-outline mb-4">
-                    <input type="password" id="form2Example2" class="form-control" />
-                    <label class="form-label" for="form2Example2">Password</label>
+                    <input type="password" id="password" class="form-control" />
+                    <label class="form-label" for="password">Password <span class="error-message"></span></label>
                 </div>
-
-                <!-- Submit button -->
                 <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
             </form>
         </div>
     </section>
+@endsection
+
+@section('js')
+    <script src="{{asset('js/login.js')}}"></script>
 @endsection

@@ -17,6 +17,8 @@
 @yield('content')
 @include('footer')
 @include('modals')
+<script src="{{asset('js/jquery-3.7.0.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
+@yield('js')
 </body>
 </html>

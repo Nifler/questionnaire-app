@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -57,7 +58,7 @@ class AuthController extends Controller
         }
 
         $token = $user->createToken('myAppToken')->plainTextToken;
-
+        Auth::login($user, true);
         $response = [
             'user' => $user,
             'token' => $token

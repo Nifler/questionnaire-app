@@ -14,7 +14,11 @@ class AuthController extends BaseController
 {
     public function login()
     {
-        return view('login');
+        $data = [
+            'userId' => Auth::user() ? Auth::user()->getAuthIdentifier() : 0
+        ];
+
+        return view('login', $data);
     }
 
     public function logout(Request $request)
