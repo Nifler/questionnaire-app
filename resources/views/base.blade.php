@@ -14,7 +14,10 @@
 </head>
 <body id="page-top">
 @include('header')
-@yield('content')
+<div class="container content">
+    @yield('content')
+</div>
+
 @include('footer')
 @include('modals')
 <script src="{{asset('js/jquery-3.7.0.min.js')}}"></script>

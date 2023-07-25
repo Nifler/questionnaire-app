@@ -2,19 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Poll;
 use App\Repository\Poll\RepositoryInterface as PollRepositoryInterface;
 use Illuminate\Routing\Controller as BaseController;
 
-class HomeController extends BaseController
+class PollController extends BaseController
 {
-    public function index(PollRepositoryInterface $pollRepository)
+    public function show(Poll $poll)
     {
-        $polls = $pollRepository->getAll();
-
-        $data = [
-            'polls' => $polls
-        ];
-
+        dd($poll);
         return view('admin.home', $data);
     }
 }
