@@ -5,6 +5,7 @@ namespace App\Providers;
 // use Illuminate\Support\Facades\Gate;
 use App\Models\PersonalAccessToken;
 use App\Models\User;
+use App\Policies\AdminPolicy;
 use App\Services\Auth\PermissionService;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -18,18 +19,16 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        //
+        //'admin' => AdminPolicy::class,
     ];
-
     /**
      * Register any authentication / authorization services.
      */
     public function boot(PermissionService $permissionService): void
     {
-        Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
+        $this->registerPolicies();
+        Gate::define('admin', [AdminPolicy::class, 'view']);
 
-        Gate::define('admin-view', function (User $user) use ($permissionService) {
-            return $permissionService->adminViewPermission($user->getAuthIdentifier());
-        });
+        Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
     }
 }

@@ -45,6 +45,6 @@ class User extends Authenticatable
 
     public function userType(): HasOne
     {
-        return $this->hasOne(UserTypes::class);
+        return $this->hasOne(UserTypes::class, 'id', 'user_type_id');
     }
 }

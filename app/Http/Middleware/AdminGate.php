@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -16,8 +17,8 @@ class AdminGate
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (! Gate::allows('admin-view')) {
-            return redirect('/');
+        if (! Gate::allows('admin')) {
+            return redirect('/login');
         }
         return $next($request);
     }

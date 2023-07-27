@@ -8,9 +8,8 @@ use Illuminate\Routing\Controller as BaseController;
 
 class PollController extends BaseController
 {
-    public function show(Poll $poll)
+    public function show($id)
     {
-        dd($poll);
-        return view('admin.home', $data);
+        return view('admin.poll');
     }
 }
