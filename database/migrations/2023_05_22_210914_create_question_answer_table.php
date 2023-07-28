@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateQuestionAnswerTable extends Migration
 {
-    private $table = 'answer_question';
+    private $table = 'question_answer';
     /**
      * Run the migrations.
      *
