@@ -30,6 +30,7 @@ class MysqlRepository implements RepositoryInterface
                     ->where('responds.poll_id', $pollId);
             })
             ->whereNull('responds.id')
+            ->where('questions.deleted', false)
             ->orderBy('order', 'asc')
             ->get();
     }
@@ -39,6 +40,7 @@ class MysqlRepository implements RepositoryInterface
         return $this
             ->getOne($pollId)
             ->questions()
+            ->where('questions.deleted', false)
             ->orderBy('order', 'asc')
             ->get();
     }
