@@ -22,6 +22,6 @@ class MysqlRepository implements RepositoryInterface
     {
         $question = Question::find($questionId);
 
-        return $question->answers;
+        return $question->answers->where('deleted', 0);
     }
 }
