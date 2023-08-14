@@ -19,15 +19,20 @@ class RespondController extends Controller
     public function store(StoreRespondRequest $request)
     {
         $userId = Auth::user()->getAuthIdentifier();
-        //TODO check question_type for question and answer
-        $respond = $this->repository->createOrUpdate(
-            $userId,
-            $request->validated('question_type_id'),
-            $request->validated('poll_id'),
-            $request->validated('question_id'),
-            $request->validated('answer_id')
-        );
 
-        return response($respond);
+        $responds = [];
+        foreach ($request->validated('answer_ids') as $answer_id) {
+            $respond = $this->repository->createOrUpdate(
+                $userId,
+                $request->validated('question_type_id'),
+                $request->validated('poll_id'),
+                $request->validated('question_id'),
+                $answer_id
+            );
+            $responds[] = $respond;
+        }
+
+
+        return response($responds);
     }
 }

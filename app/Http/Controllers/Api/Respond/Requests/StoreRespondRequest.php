@@ -28,7 +28,8 @@ class StoreRespondRequest extends FormRequest
             'poll_id' => 'required|int|exists:polls,id',
             'question_id' => 'required|int|exists:questions,id',
             'question_type_id' => 'required|int|exists:question_types,id',
-            'answer_id' => 'required|int|exists:answers,id',
+            'answer_ids' => 'required|array|exists:answers,id',
+            'answer_ids.*' => 'integer|exists:answers,id'
         ];
     }
 }

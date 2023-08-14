@@ -28,7 +28,7 @@ function drawQuestion() {
                 title.append(question.title);
                 text.append(question.description);
 
-                drawAnswers(question.id);
+                drawAnswers(question.id, question.multi_answers);
 
             } else {
                 $( "#error" ).append(data.message);
@@ -39,7 +39,7 @@ function drawQuestion() {
         });
 }
 
-function drawAnswers(questionId) {
+function drawAnswers(questionId, multiAnswers) {
     var url = $(location).attr("origin") + '/api/answers?questionId=' + questionId;
 
     $.get( url, { link: url } )
@@ -48,13 +48,17 @@ function drawAnswers(questionId) {
             var questionInputs = $('#question-inputs');
 
             questionInputs.empty();
+            var inputType = 'radio';
+            if (multiAnswers) {
+                inputType = 'checkbox';
+            }
 
             var questionStr = '';
             for (const [key, question] of Object.entries(data.data)) {
 
                 questionStr +=
                     ' <div class="form-check">' +
-                    '     <input class="form-check-input" type="radio" name="answer" value="' + question.id + '">' +
+                    '     <input class="form-check-input" type="' + inputType + '" name="answer" value="' + question.id + '">' +
                     '     <label class="form-check-label" for="answer">' +
                                 question.title +
                     '     </label>' +
@@ -68,14 +72,20 @@ function drawAnswers(questionId) {
 function sendRespond() {
     var url = $(location).attr("origin") + '/api/responds';
 
-    var answerId = $('input[name="answer"]:checked').val();
+    var answerId = $('input[name="answer"]:checked');
+
+    var selectedIds = [];
+    answerId.each(function() {
+        selectedIds.push($(this).val());
+    });
+
     var body = $( "body" );
 
     let respondData = {
         poll_id: body.data('poll_id'),
         question_type_id: body.data('question_type_id'),
         question_id: body.data('question_id'),
-        answer_id: answerId
+        answer_ids: selectedIds
     };
 
     $.post( url, respondData )
