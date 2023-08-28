@@ -4,7 +4,7 @@
     <section class="page-section">
         <div class="container login">
             <div class="row">
-                <h2>Login</h2>{{$userId}}
+                <h2>Login</h2>
                 <p id="error-message" class="error-message"></p>
             </div>
             <form class="login-form">
