@@ -1,4 +1,4 @@
-<footer class="footer navbar-fixed-bottom text-center bg-firm-color">
+<footer class="footer text-center bg-firm-color">
     <div class="container">
         <div class="row">
             <!-- Footer Left text-->
