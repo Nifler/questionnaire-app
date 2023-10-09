@@ -30,9 +30,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('/questions', \App\Http\Controllers\Api\Question\QuestionController::class);
     Route::resource('/answers', \App\Http\Controllers\Api\Answer\AnswerController::class);
     Route::post('/responds', [\App\Http\Controllers\Api\Respond\RespondController::class, 'store']);
+    Route::post('/updateMyEmail', [\App\Http\Controllers\Api\User\UserController::class, 'updateMyEmail']);
 });
 
-
-
 Route::get('/check', [LifeCheckController::class, 'check']);
-

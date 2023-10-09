@@ -19,4 +19,12 @@ class MysqlRepository implements RepositoryInterface
     {
         return User::find($id);
     }
+
+    public function updateById(int $id, array $params): User
+    {
+        $user = $this->getOne($id);
+        $user->update($params);
+
+        return $user;
+    }
 }
