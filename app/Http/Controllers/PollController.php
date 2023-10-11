@@ -47,10 +47,12 @@ class PollController extends BaseController
         }
 
         $poll = $this->repository->getOne($id);
-
+        $needEmail = empty(Auth::user()->email);
+//        dd($needEmail);
         $data = [
             'user_id' => Auth::user()->getAuthIdentifier(),
             'poll' => $poll,
+            'need_email' => $needEmail
         ];
 
         return view('questionnaire.finished', $data);

@@ -15,21 +15,24 @@
 <body id="page-top">
 @include('header')
 <div class="container question-container">
-    <div class="row justify-content-around">
-        <div class="col-12"><h2>{{$poll->title}}</h2></div>
-        <div class="col-12"><h4>{{$poll->description}}</h4></div>
-    </div>
+{{--    <div class="row justify-content-around">--}}
+{{--        <div class="col-12"><h2>{{$poll->title}}</h2></div>--}}
+{{--        <div class="col-12"><h4>{{$poll->description}}</h4></div>--}}
+{{--    </div>--}}
+
     <div class="row justify-content-around">
         <p>Thank you for your answers!</p>
-        <p id="email-msg">We need your email ONLY to send the survey results and thank-you files about career development.
-            We don't like spamming, too, so your email is safe.</p>
-        <div style="color: red" id="error"></div>
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <button id="send" class="btn btn-primary">Submit</button>
+        @if ($need_email)
+            <p id="email-msg">And now, if you want to get survey results and thank-you files about career development, you can leave your email.
+                We also don't like spam, so your email is safe.</p>
+            <div style="color: red" id="error"></div>
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <button id="send" class="btn btn-primary">Submit</button>
+        @endif
     </div>
 </div>
 @include('footer')

@@ -19,10 +19,12 @@ function successChange()
     $('.form-group').empty();
     $('#error').empty();
     $('#email-msg').empty();
+    $('#send').remove();
 }
 
 function errorChange(data)
 {
+    $('#error').empty();
     $('#error').append(data.responseJSON.message);
 }
 
