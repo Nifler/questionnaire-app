@@ -40,6 +40,15 @@ class AuthController extends Controller
 
     public function login(Request $request): Response
     {
+        if ($request->boolean('auto')) {
+            $user = User::create(['name' => 'respondent']);
+
+            return response([
+                'user'  => $user,
+                'token' => $user->createToken('myAppToken')->plainTextToken,
+            ], 201);
+        }
+
         $fields = $request->validate([
             'email'     => 'required|email|exists:users,email',
             'password'  => 'required|string'
@@ -59,12 +68,11 @@ class AuthController extends Controller
 
         $token = $user->createToken('myAppToken')->plainTextToken;
         Auth::login($user, true);
-        $response = [
-            'user' => $user,
-            'token' => $token
-        ];
 
-        return response($response, 201);
+        return response([
+            'user'  => $user,
+            'token' => $token,
+        ], 201);
     }
 
     public function logout(): Response

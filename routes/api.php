@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     /** Auth */
     Route::post('/logout', [\App\Http\Controllers\Api\AuthController::class, 'logout']);
 
+    Route::resource('/polls', \App\Http\Controllers\Api\Poll\PollController::class);
     Route::resource('/question_types', \App\Http\Controllers\Api\QuestionType\QuestionTypeController::class);
     Route::resource('/questions', \App\Http\Controllers\Api\Question\QuestionController::class);
     Route::resource('/answers', \App\Http\Controllers\Api\Answer\AnswerController::class);
