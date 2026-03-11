@@ -24,11 +24,10 @@ class QuestionTypeController extends Controller
      */
     public function index(Response $response)
     {
-        $res = $this->repository->getAll();
-
-        $response->setContent($res);
-
-        return $response;
+        return $response->setContent([
+            'success' => true,
+            'data' => $this->repository->getAll(),
+        ]);
     }
 
     /**
@@ -50,7 +49,10 @@ class QuestionTypeController extends Controller
      */
     public function show(QuestionType $questionType, Response $response)
     {
-        return $response->setContent($questionType);
+        return $response->setContent([
+            'success' => true,
+            'data' => $questionType,
+        ]);
     }
 
     /**

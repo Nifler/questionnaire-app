@@ -15,7 +15,7 @@ class UserController extends Controller
     ) {
     }
 
-    public function updateMyEmail(UpdateMyEmailRequest $request)
+    public function update(UpdateMyEmailRequest $request)
     {
         $user = $this->userRepository->updateById(Auth::user()->id, $request->all());
 

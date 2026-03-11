@@ -27,11 +27,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [\App\Http\Controllers\Api\AuthController::class, 'logout']);
 
     Route::resource('/polls', \App\Http\Controllers\Api\Poll\PollController::class);
+    Route::get('/polls/{pollId}/questions', [\App\Http\Controllers\Api\Poll\QuestionsController::class, 'index']);
+    Route::get('/polls/{pollId}/questions/next', [\App\Http\Controllers\Api\Poll\QuestionsController::class, 'nextQuestion']);
     Route::resource('/question_types', \App\Http\Controllers\Api\QuestionType\QuestionTypeController::class);
     Route::resource('/questions', \App\Http\Controllers\Api\Question\QuestionController::class);
     Route::resource('/answers', \App\Http\Controllers\Api\Answer\AnswerController::class);
     Route::post('/responds', [\App\Http\Controllers\Api\Respond\RespondController::class, 'store']);
-    Route::post('/updateMyEmail', [\App\Http\Controllers\Api\User\UserController::class, 'updateMyEmail']);
+    Route::put('/user', [\App\Http\Controllers\Api\User\UserController::class, 'update']);
 });
 
 Route::get('/check', [LifeCheckController::class, 'check']);
