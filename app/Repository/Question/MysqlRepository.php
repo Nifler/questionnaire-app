@@ -16,8 +16,8 @@ class MysqlRepository implements RepositoryInterface
                 $request->where($key, $value);
             }, array_keys($where), $where);
         }
-dd(123);
-        dd($request->get());
+
+        return $request->get();
     }
 
     public function getOne(int $id): Question

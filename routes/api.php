@@ -33,6 +33,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::resource('/questions', \App\Http\Controllers\Api\Question\QuestionController::class);
     Route::resource('/answers', \App\Http\Controllers\Api\Answer\AnswerController::class);
     Route::post('/responds', [\App\Http\Controllers\Api\Respond\RespondController::class, 'store']);
+    Route::post('/custom_responds', [\App\Http\Controllers\Api\CustomRespond\CustomRespondController::class, 'store']);
     Route::put('/user', [\App\Http\Controllers\Api\User\UserController::class, 'update']);
 });
 
