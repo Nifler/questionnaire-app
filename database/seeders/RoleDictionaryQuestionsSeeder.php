@@ -23,7 +23,7 @@ class RoleDictionaryQuestionsSeeder extends Seeder
 
             // ── Питання після вибору треку (type 2) ──────────────────────────
             ['id' =>  2, 'title' => 'Engineering / R&D',                                     'description' => 'Оберіть ваш основний інженерний напрям', 'question_type_id' => 11, 'deleted' => false, 'multi_answers' => false],
-            ['id' =>  3, 'title' => 'Non-Engineering Master Structure',                       'description' => 'Оберіть ваш функціональний напрям:',     'question_type_id' => 11, 'deleted' => false, 'multi_answers' => false],
+            ['id' =>  3, 'title' => 'Non-Engineering',                                        'description' => 'Оберіть ваш функціональний напрям:',     'question_type_id' => 11, 'deleted' => false, 'multi_answers' => false],
 
             // ── Engineering Domains → мають підсекції (type 3) ───────────────
             ['id' =>  4, 'title' => 'Engineering Management / R&D Leadership',               'description' => 'Уточніть ваш піднапрям:', 'question_type_id' => 12, 'deleted' => false, 'multi_answers' => false],
@@ -54,7 +54,7 @@ class RoleDictionaryQuestionsSeeder extends Seeder
             ['id' => 23, 'title' => 'Architecture / System Ownership',         'description' => 'Вкажіть вашу роль.', 'question_type_id' => 13, 'deleted' => false, 'multi_answers' => false],
             ['id' => 24, 'title' => 'Lead Engineers (Senior IC)',               'description' => 'Вкажіть вашу роль.', 'question_type_id' => 13, 'deleted' => false, 'multi_answers' => false],
             ['id' => 25, 'title' => 'Backend / Application Engineering',       'description' => 'Вкажіть вашу роль.', 'question_type_id' => 13, 'deleted' => false, 'multi_answers' => false],
-            ['id' => 26, 'title' => 'Frontend / Full Stack (Internal Software)','description' => 'Вкажіть вашу роль.', 'question_type_id' => 13, 'deleted' => false, 'multi_answers' => false],
+            ['id' => 26, 'title' => 'Frontend','description' => 'Вкажіть вашу роль.', 'question_type_id' => 13, 'deleted' => false, 'multi_answers' => false],
             ['id' => 27, 'title' => 'Systems / Linux Software',                'description' => 'Вкажіть вашу роль.', 'question_type_id' => 13, 'deleted' => false, 'multi_answers' => false],
             ['id' => 28, 'title' => 'Hardware / Electronics',                  'description' => 'Вкажіть вашу роль.', 'question_type_id' => 13, 'deleted' => false, 'multi_answers' => false],
             ['id' => 29, 'title' => 'PCB / RF / FPGA',                         'description' => 'Вкажіть вашу роль.', 'question_type_id' => 13, 'deleted' => false, 'multi_answers' => false],
@@ -229,11 +229,19 @@ class RoleDictionaryQuestionsSeeder extends Seeder
             ['question_id' => 24, 'answer_id' =>  59], // Lead C++ Engineer (Hardware & Software)
             ['question_id' => 24, 'answer_id' =>  60], // Lead C++ / Computer Vision Engineer
 
-            // Q25 (Backend / Application Engineering) → 1 роль
-            ['question_id' => 25, 'answer_id' =>  61], // Backend / Application Engineer
+            // Q25 (Backend / Application Engineering) → 7 ролей
+            ['question_id' => 25, 'answer_id' => 284], // PHP
+            ['question_id' => 25, 'answer_id' => 285], // Python
+            ['question_id' => 25, 'answer_id' => 286], // Node.js
+            ['question_id' => 25, 'answer_id' => 287], // Java
+            ['question_id' => 25, 'answer_id' => 288], // C#
+            ['question_id' => 25, 'answer_id' => 289], // Rust
+            ['question_id' => 25, 'answer_id' => 290], // C/C++
 
-            // Q26 (Frontend / Full Stack Internal Software) → 1 роль
-            ['question_id' => 26, 'answer_id' =>  62], // Frontend / Full Stack Engineer (Internal Software)
+            // Q26 (Frontend) → 3 ролі
+            ['question_id' => 26, 'answer_id' => 291], // React
+            ['question_id' => 26, 'answer_id' => 292], // JavaScript
+            ['question_id' => 26, 'answer_id' => 293], // TypeScript
 
             // Q27 (Systems / Linux Software) → 1 роль
             ['question_id' => 27, 'answer_id' =>  63], // Systems / Linux Software Engineer

@@ -28,7 +28,7 @@ class RoleDictionarySeeder extends Seeder
 
             // ── Track (type 1) ────────────────────────────────────────────────
             ['id' =>  1, 'title' => 'Engineering / R&D',                'description' => null, 'question_type_id' => 10, 'deleted' => false],
-            ['id' =>  2, 'title' => 'Non-Engineering Master Structure', 'description' => null, 'question_type_id' => 10, 'deleted' => false],
+            ['id' =>  2, 'title' => 'Non-Engineering',                  'description' => null, 'question_type_id' => 10, 'deleted' => false],
 
             // ── Domain (type 2) — Engineering ─────────────────────────────────
             ['id' =>  3, 'title' => 'Engineering Management / R&D Leadership',           'description' => null, 'question_type_id' => 11, 'deleted' => false],
@@ -58,7 +58,7 @@ class RoleDictionarySeeder extends Seeder
             ['id' => 23, 'title' => 'Lead Engineers (Senior IC)',              'description' => null, 'question_type_id' => 12, 'deleted' => false],
             // under "2. Software Engineering (R&D)"
             ['id' => 24, 'title' => 'Backend / Application Engineering',        'description' => null, 'question_type_id' => 12, 'deleted' => false],
-            ['id' => 25, 'title' => 'Frontend / Full Stack (Internal Software)', 'description' => null, 'question_type_id' => 12, 'deleted' => false],
+            ['id' => 25, 'title' => 'Frontend', 'description' => null, 'question_type_id' => 12, 'deleted' => false],
             ['id' => 26, 'title' => 'Systems / Linux Software',                 'description' => null, 'question_type_id' => 12, 'deleted' => false],
             ['id' => 27, 'title' => 'Hardware / Electronics',                   'description' => null, 'question_type_id' => 12, 'deleted' => false],
             ['id' => 28, 'title' => 'PCB / RF / FPGA',                          'description' => null, 'question_type_id' => 12, 'deleted' => false],
@@ -103,9 +103,17 @@ class RoleDictionarySeeder extends Seeder
             ['id' =>  59, 'title' => 'Lead C++ Engineer (Hardware & Software)', 'description' => null, 'question_type_id' => 13, 'deleted' => false],
             ['id' =>  60, 'title' => 'Lead C++ / Computer Vision Engineer', 'description' => null, 'question_type_id' => 13, 'deleted' => false],
             // 2.1 Backend / Application Engineering
-            ['id' =>  61, 'title' => 'Backend / Application Engineer', 'description' => null, 'question_type_id' => 13, 'deleted' => false],
-            // 2.2 Frontend / Full Stack
-            ['id' =>  62, 'title' => 'Frontend / Full Stack Engineer (Internal Software)', 'description' => null, 'question_type_id' => 13, 'deleted' => false],
+            ['id' => 284, 'title' => 'PHP',    'description' => null, 'question_type_id' => 13, 'deleted' => false],
+            ['id' => 285, 'title' => 'Python', 'description' => null, 'question_type_id' => 13, 'deleted' => false],
+            ['id' => 286, 'title' => 'Node.js','description' => null, 'question_type_id' => 13, 'deleted' => false],
+            ['id' => 287, 'title' => 'Java',   'description' => null, 'question_type_id' => 13, 'deleted' => false],
+            ['id' => 288, 'title' => 'C#',     'description' => null, 'question_type_id' => 13, 'deleted' => false],
+            ['id' => 289, 'title' => 'Rust',   'description' => null, 'question_type_id' => 13, 'deleted' => false],
+            ['id' => 290, 'title' => 'C/C++',  'description' => null, 'question_type_id' => 13, 'deleted' => false],
+            // 2.2 Frontend
+            ['id' => 291, 'title' => 'React',      'description' => null, 'question_type_id' => 13, 'deleted' => false],
+            ['id' => 292, 'title' => 'JavaScript',  'description' => null, 'question_type_id' => 13, 'deleted' => false],
+            ['id' => 293, 'title' => 'TypeScript',  'description' => null, 'question_type_id' => 13, 'deleted' => false],
             // 2.3 Systems / Linux Software
             ['id' =>  63, 'title' => 'Systems / Linux Software Engineer', 'description' => null, 'question_type_id' => 13, 'deleted' => false],
             // 3. Embedded & Firmware (direct roles — no SubDomain)

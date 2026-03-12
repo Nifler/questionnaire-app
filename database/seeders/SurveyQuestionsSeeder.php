@@ -37,7 +37,7 @@ class SurveyQuestionsSeeder extends Seeder
             ['id' => 56, 'title' => 'Поточний рівень щомісячної компенсації (USD)',                        'description' => null, 'question_type_id' =>  15, 'multi_answers' => 0],
             ['id' => 57, 'title' => 'Очікувана компенсація при зміні роботи',                              'description' => null, 'question_type_id' =>  16, 'multi_answers' => 0],
             ['id' => 58, 'title' => 'Як змінилась ваша фінансова компенсація за останній рік',             'description' => null, 'question_type_id' =>  17, 'multi_answers' => 0],
-            ['id' => 59, 'title' => 'Структура компенсації',                                               'description' => null, 'question_type_id' =>  18, 'multi_answers' => 1],
+            ['id' => 59, 'title' => 'Структура компенсації',                                               'description' => null, 'question_type_id' =>  18, 'multi_answers' => 0],
             ['id' => 60, 'title' => 'Тип співпраці з компанією',                                           'description' => null, 'question_type_id' =>  19, 'multi_answers' => 0],
             ['id' => 61, 'title' => 'Чи маєте ви бронювання від компанії',                                 'description' => null, 'question_type_id' =>  20, 'multi_answers' => 0],
             ['id' => 62, 'title' => 'Наскільки для вас важлива наявність бронювання при зміні роботи',     'description' => null, 'question_type_id' =>  21, 'multi_answers' => 0],
@@ -95,11 +95,11 @@ class SurveyQuestionsSeeder extends Seeder
 
         // Q58 — Salary Change (type 17), answers 164–168
         DB::table('answers')->insert([
-            ['id' => 164, 'title' => 'Значно зросла',      'question_type_id' =>  17],
-            ['id' => 165, 'title' => 'Помірно зросла',     'question_type_id' =>  17],
-            ['id' => 166, 'title' => 'Не змінилась',       'question_type_id' =>  17],
-            ['id' => 167, 'title' => 'Помірно знизилась',  'question_type_id' =>  17],
-            ['id' => 168, 'title' => 'Значно знизилась',   'question_type_id' =>  17],
+            ['id' => 164, 'title' => 'Значно зросла (понад 30%)',          'question_type_id' =>  17],
+            ['id' => 165, 'title' => 'Помірно зросла (10–30%)',           'question_type_id' =>  17],
+            ['id' => 166, 'title' => 'Майже не змінилась (менше 10%)',    'question_type_id' =>  17],
+            ['id' => 167, 'title' => 'Помірно знизилась (10–30%)',        'question_type_id' =>  17],
+            ['id' => 168, 'title' => 'Значно знизилась (понад 30%)',      'question_type_id' =>  17],
         ]);
 
         // Q59 — Compensation Structure (type 18), answers 169–172
@@ -203,7 +203,6 @@ class SurveyQuestionsSeeder extends Seeder
         DB::table('answers')->insert([
             ['id' => 226, 'title' => 'Продуктова MilTech / Defense',       'question_type_id' => 28],
             ['id' => 227, 'title' => 'Стартап MilTech / Defense',          'question_type_id' => 28],
-            ['id' => 228, 'title' => 'R&D MilTech / Defense',              'question_type_id' => 28],
             ['id' => 229, 'title' => 'Аутсорс / аутстаф',                 'question_type_id' => 28],
             ['id' => 230, 'title' => 'Вийти зі сфери MilTech / Defense',   'question_type_id' => 28],
             ['id' => 231, 'title' => 'Не має значення',                    'question_type_id' => 28],
@@ -244,7 +243,7 @@ class SurveyQuestionsSeeder extends Seeder
             ['id' => 262, 'title' => 'Азія',                    'question_type_id' => 29],
             ['id' => 263, 'title' => 'Африка',                  'question_type_id' => 29],
             ['id' => 264, 'title' => 'Австралія та Океанія',    'question_type_id' => 29],
-            ['id' => 265, 'title' => 'Інша країна (вкажіть)',   'question_type_id' => 29],
+            ['id' => 265, 'title' => 'Інша країна (вкажіть)',   'question_type_id' =>  1],
         ]);
 
         // Q71 — Job Search Status (type 30), answers 266–270
@@ -380,7 +379,6 @@ class SurveyQuestionsSeeder extends Seeder
             // Q69 — Preferred Company Type
             ['question_id' => 69, 'answer_id' => 226],
             ['question_id' => 69, 'answer_id' => 227],
-            ['question_id' => 69, 'answer_id' => 228],
             ['question_id' => 69, 'answer_id' => 229],
             ['question_id' => 69, 'answer_id' => 230],
             ['question_id' => 69, 'answer_id' => 231],
@@ -458,9 +456,9 @@ class SurveyQuestionsSeeder extends Seeder
             ['poll_id' => 1, 'question_id' => 67, 'order' => 17],
             ['poll_id' => 1, 'question_id' => 68, 'order' => 18],
             ['poll_id' => 1, 'question_id' => 69, 'order' => 19],
-            ['poll_id' => 1, 'question_id' => 70, 'order' => 20],
-            ['poll_id' => 1, 'question_id' => 71, 'order' => 21],
-            ['poll_id' => 1, 'question_id' => 72, 'order' => 22],
+            ['poll_id' => 1, 'question_id' => 70, 'order' => 22],
+            ['poll_id' => 1, 'question_id' => 71, 'order' => 20],
+            ['poll_id' => 1, 'question_id' => 72, 'order' => 21],
         ]);
     }
 }
