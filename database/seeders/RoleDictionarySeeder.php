@@ -227,6 +227,50 @@ class RoleDictionarySeeder extends Seeder
             ['id' => 136, 'title' => 'Operations / Administrative Manager', 'description' => null, 'question_type_id' => 13, 'deleted' => false],
             // 5.5 Training / Instructors
             ['id' => 137, 'title' => 'Training Instructor / Technical Trainer', 'description' => null, 'question_type_id' => 13, 'deleted' => false],
+
+            // ── Інше (Custom) — по одній на кожне питання типу Role ───────────
+            ['id' => 294, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q8
+            ['id' => 295, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q9
+            ['id' => 296, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q10
+            ['id' => 297, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q11
+            ['id' => 298, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q12
+            ['id' => 299, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q13
+            ['id' => 300, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q14
+            ['id' => 301, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q15
+            ['id' => 302, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q21
+            ['id' => 303, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q22
+            ['id' => 304, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q23
+            ['id' => 305, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q24
+            ['id' => 306, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q25
+            ['id' => 307, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q26
+            ['id' => 308, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q27
+            ['id' => 309, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q28
+            ['id' => 310, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q29
+            ['id' => 311, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q30
+            ['id' => 312, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q31
+            ['id' => 313, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q32
+            ['id' => 314, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q33
+            ['id' => 315, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q34
+            ['id' => 316, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q35
+            ['id' => 317, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q36
+            ['id' => 318, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q37
+            ['id' => 319, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q38
+            ['id' => 320, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q39
+            ['id' => 321, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q40
+            ['id' => 322, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q41
+            ['id' => 323, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q42
+            ['id' => 324, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q43
+            ['id' => 325, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q44
+            ['id' => 326, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q45
+            ['id' => 327, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q46
+            ['id' => 328, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q47
+            ['id' => 329, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q48
+            ['id' => 330, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q49
+            ['id' => 331, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q50
+            ['id' => 332, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q51
+            ['id' => 333, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q52
+            ['id' => 334, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q53
+            ['id' => 335, 'title' => 'Інше', 'description' => null, 'question_type_id' => 1, 'deleted' => false], // Q54
         ]);
     }
 }
