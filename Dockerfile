@@ -13,10 +13,7 @@ COPY composer*.json ./
 RUN composer install --no-dev --optimize-autoloader --no-scripts --no-interaction
 
 COPY . .
-RUN composer run-script post-autoload-dump || true \
-    && php artisan config:cache \
-    && php artisan route:cache \
-    && php artisan view:cache
+RUN composer run-script post-autoload-dump || true
 
 
 FROM php:8.2-fpm-alpine AS runner
@@ -32,13 +29,15 @@ RUN addgroup -g 1001 -S php && adduser -u 1001 -S php -G php
 WORKDIR /var/www
 
 COPY --from=builder --chown=php:php /var/www ./
+COPY --chown=php:php docker/entrypoint.sh ./entrypoint.sh
 
 RUN mkdir -p storage/logs storage/framework/cache storage/framework/sessions storage/framework/views bootstrap/cache \
     && chmod -R 775 storage bootstrap/cache \
-    && chown -R php:php storage bootstrap/cache
+    && chown -R php:php storage bootstrap/cache \
+    && chmod +x entrypoint.sh
 
 USER php
 
 EXPOSE 9000
 
-CMD ["php-fpm"]
+CMD ["./entrypoint.sh"]
