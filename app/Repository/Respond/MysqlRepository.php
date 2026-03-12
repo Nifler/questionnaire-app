@@ -6,6 +6,7 @@ use App\Models\Poll;
 use App\Models\Respond;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class MysqlRepository implements RepositoryInterface
 {
@@ -24,30 +25,45 @@ class MysqlRepository implements RepositoryInterface
         int $questionTypeId,
         int $pollId,
         int $questionId,
-        int $answerId
-    ): Respond {
-        $respond = Respond::query()
-            ->where('user_id', $userId)
-            ->where('question_type_id', $questionTypeId)
-            ->where('poll_id', $pollId)
-            ->where('question_id', $questionId)
-            ->first();
+        array $answerIds
+    ): array {
 
-        if (empty($respond)) {
-            $respond = Respond::create([
-                'user_id' => $userId,
-                'question_type_id' => $questionTypeId,
-                'poll_id' => $pollId,
-                'question_id' => $questionId,
-                'answer_id' => $answerId,
-            ]);
-        } else {
-            $respond->answer_id = $answerId;
-        }
+        $attributes = [
+            'user_id' => $userId,
+            'question_type_id' => $questionTypeId,
+            'poll_id' => $pollId,
+            'question_id' => $questionId,
+        ];
+        $createdResponds = DB::transaction(function () use ($attributes, $answerIds) {
+            Respond::query()
+                ->where($attributes)
+                ->delete();
 
-        $respond->save();
+            if (empty($answerIds)) {
+                return collect();
+            }
 
-        return $respond;
+            $now = now();
+
+            $createData = [];
+            foreach ($answerIds as $answerId) {
+                $createData[] = [
+                    ...$attributes,
+                    'answer_id' => $answerId,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ];
+            }
+
+            Respond::query()->insert($createData);
+
+            return Respond::query()
+                ->where($attributes)
+                ->whereIn('answer_id', $answerIds)
+                ->get();
+        });
+
+        return $createdResponds->toArray();
     }
 
     public function getQuestionsAnswersResponds(array $data): Collection

@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             RoleDictionaryQuestionsSeeder::class,
             RoleDictionaryPollSeeder::class,
             RoleDictionaryConditionsSeeder::class,
+            SurveyQuestionsSeeder::class,
         ]);
     }
 }
