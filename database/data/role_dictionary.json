@@ -1,0 +1,222 @@
+{
+  "_comment": "Структура опитувальника зі словника ролей MilTech/Defense. Кожен 'group' вузол = питання + відповідь на батьківське питання. Кожен 'role' вузол = фінальна відповідь (роль). question_type_id: 1=верхній рівень, 2=секція, 3=підсекція, 4=роль",
+
+  "poll": {
+    "title": "Role Dictionary — MilTech / Defense",
+    "key": "role_dictionary",
+    "description": null
+  },
+
+  "question_types": [
+    { "id": 1, "title": "Top Level Category",  "description": "Найвищий рівень: Engineering vs Non-Engineering" },
+    { "id": 2, "title": "Section",             "description": "Основна функціональна область всередині категорії" },
+    { "id": 3, "title": "Subsection",          "description": "Спеціалізація всередині секції" },
+    { "id": 4, "title": "Role",                "description": "Фінальна роль — без подальшого випадаючого списку" }
+  ],
+
+  "_legend": {
+    "node_type": "'group' = є питанням (має дочірні елементи / dropdown); 'role' = фінальна відповідь (немає dropdown)",
+    "question_type_id": "визначається глибиною: depth-1 groups=1, depth-2 groups=2, depth-3 groups=3, будь-який role=4",
+    "parent_key": "ключ батьківського вузла (null = корінь, є тільки у poll)",
+    "order": "порядок серед братніх елементів (для poll_question.order та сортування)"
+  },
+
+  "root_question": {
+    "key": "all_roles_miltech_defense",
+    "title": "ALL ROLES — MilTech / Defense",
+    "question_type_id": 1,
+    "note": "Це перше (і єдине кореневе) питання в poll. Його відповіді = depth-1 групи нижче."
+  },
+
+  "nodes": [
+
+    { "key": "engineering_rd",                    "title": "ENGINEERING / R&D",                                          "question_type_id": 1, "node_type": "group", "parent_key": "all_roles_miltech_defense",              "order": 1 },
+    { "key": "non_engineering_master_structure",  "title": "NON-ENGINEERING MASTER STRUCTURE",                           "question_type_id": 1, "node_type": "group", "parent_key": "all_roles_miltech_defense",              "order": 2 },
+
+    { "key": "eng_mgmt_rd_leadership",                         "title": "1. Engineering Management / R&D Leadership",            "question_type_id": 2, "node_type": "group", "parent_key": "engineering_rd",                        "order": 1  },
+    { "key": "software_engineering_rd",                        "title": "2. Software Engineering (R&D)",                         "question_type_id": 2, "node_type": "group", "parent_key": "engineering_rd",                        "order": 2  },
+    { "key": "embedded_firmware_engineering",                  "title": "3. Embedded & Firmware Engineering",                    "question_type_id": 2, "node_type": "group", "parent_key": "engineering_rd",                        "order": 3  },
+    { "key": "hardware_engineering_electronics",               "title": "4. Hardware Engineering & Electronics",                 "question_type_id": 2, "node_type": "group", "parent_key": "engineering_rd",                        "order": 4  },
+    { "key": "mechanical_cad_industrial_aviation_design",      "title": "5. Mechanical / CAD / Industrial / Aviation Design",    "question_type_id": 2, "node_type": "group", "parent_key": "engineering_rd",                        "order": 5  },
+    { "key": "robotics_uav_ugv_platform_engineering",          "title": "6. Robotics / UAV / UGV / Platform Engineering",        "question_type_id": 2, "node_type": "group", "parent_key": "engineering_rd",                        "order": 6  },
+    { "key": "algorithms_autonomy_cv_ml",                      "title": "7. Algorithms / Autonomy / CV / ML",                    "question_type_id": 2, "node_type": "group", "parent_key": "engineering_rd",                        "order": 7  },
+    { "key": "systems_integration_field_test_validation",      "title": "8. Systems Integration / Field Test / Validation",      "question_type_id": 2, "node_type": "group", "parent_key": "engineering_rd",                        "order": 8  },
+    { "key": "qa_test_engineering",                            "title": "9. QA / Test Engineering",                             "question_type_id": 2, "node_type": "group", "parent_key": "engineering_rd",                        "order": 9  },
+    { "key": "simulation_modeling_visualization_rd",           "title": "10. Simulation / Modeling / Visualization (R&D)",       "question_type_id": 2, "node_type": "group", "parent_key": "engineering_rd",                        "order": 10 },
+    { "key": "devops_infrastructure_security_rd",              "title": "11. DevOps / Infrastructure / Security (R&D)",          "question_type_id": 2, "node_type": "group", "parent_key": "engineering_rd",                        "order": 11 },
+    { "key": "technical_writing_documentation_engineering_ops","title": "12. Technical Writing / Documentation / Engineering Ops","question_type_id": 2, "node_type": "group", "parent_key": "engineering_rd",                        "order": 12 },
+
+    { "key": "product_delivery",            "title": "1. Product & Delivery",            "question_type_id": 2, "node_type": "group", "parent_key": "non_engineering_master_structure", "order": 1 },
+    { "key": "production_operations",       "title": "2. Production / Operations",       "question_type_id": 2, "node_type": "group", "parent_key": "non_engineering_master_structure", "order": 2 },
+    { "key": "qa_vtk_quality_control",      "title": "3. QA / VTK / Quality Control",   "question_type_id": 2, "node_type": "group", "parent_key": "non_engineering_master_structure", "order": 3 },
+    { "key": "go_to_market_corporate",      "title": "4. Go-to-Market & Corporate",      "question_type_id": 2, "node_type": "group", "parent_key": "non_engineering_master_structure", "order": 4 },
+    { "key": "people_operations",           "title": "5. People & Operations",           "question_type_id": 2, "node_type": "group", "parent_key": "non_engineering_master_structure", "order": 5 },
+
+    { "key": "eng_mgmt",                        "title": "1.1 Engineering Management",               "question_type_id": 3, "node_type": "group", "parent_key": "eng_mgmt_rd_leadership",   "order": 1 },
+    { "key": "technical_leadership_team_level", "title": "1.2 Technical Leadership (Team level)",    "question_type_id": 3, "node_type": "group", "parent_key": "eng_mgmt_rd_leadership",   "order": 2 },
+    { "key": "architecture_system_ownership",   "title": "1.3 Architecture / System Ownership",      "question_type_id": 3, "node_type": "group", "parent_key": "eng_mgmt_rd_leadership",   "order": 3 },
+    { "key": "lead_engineers_senior_ic",        "title": "1.4 Lead Engineers (Senior IC)",           "question_type_id": 3, "node_type": "group", "parent_key": "eng_mgmt_rd_leadership",   "order": 4 },
+
+    { "key": "backend_application_engineering",      "title": "2.1 Backend / Application Engineering",        "question_type_id": 3, "node_type": "group", "parent_key": "software_engineering_rd", "order": 1 },
+    { "key": "frontend_fullstack_internal_software", "title": "2.2 Frontend / Full Stack (Internal Software)", "question_type_id": 3, "node_type": "group", "parent_key": "software_engineering_rd", "order": 2 },
+    { "key": "systems_linux_software",               "title": "2.3 Systems / Linux Software",                 "question_type_id": 3, "node_type": "group", "parent_key": "software_engineering_rd", "order": 3 },
+
+    { "key": "hardware_electronics", "title": "4.1 Hardware / Electronics", "question_type_id": 3, "node_type": "group", "parent_key": "hardware_engineering_electronics", "order": 1 },
+    { "key": "pcb_rf_fpga",          "title": "4.2 PCB / RF / FPGA",        "question_type_id": 3, "node_type": "group", "parent_key": "hardware_engineering_electronics", "order": 2 },
+
+    { "key": "control_navigation", "title": "7.1 Control & Navigation", "question_type_id": 3, "node_type": "group", "parent_key": "algorithms_autonomy_cv_ml", "order": 1 },
+    { "key": "computer_vision",    "title": "7.2 Computer Vision",       "question_type_id": 3, "node_type": "group", "parent_key": "algorithms_autonomy_cv_ml", "order": 2 },
+    { "key": "machine_learning",   "title": "7.3 Machine Learning",      "question_type_id": 3, "node_type": "group", "parent_key": "algorithms_autonomy_cv_ml", "order": 3 },
+    { "key": "embedded_ai",        "title": "7.4 Embedded AI",           "question_type_id": 3, "node_type": "group", "parent_key": "algorithms_autonomy_cv_ml", "order": 4 },
+
+    { "key": "product_management",          "title": "1.1 Product Management",           "question_type_id": 3, "node_type": "group", "parent_key": "product_delivery", "order": 1 },
+    { "key": "project_program_management",  "title": "1.2 Project / Program Management", "question_type_id": 3, "node_type": "group", "parent_key": "product_delivery", "order": 2 },
+    { "key": "business_system_analysis",    "title": "1.3 Business / System Analysis",   "question_type_id": 3, "node_type": "group", "parent_key": "product_delivery", "order": 3 },
+
+    { "key": "manufacturing_production_engineering",      "title": "2.1 Manufacturing / Production Engineering",      "question_type_id": 3, "node_type": "group", "parent_key": "production_operations", "order": 1 },
+    { "key": "additive_manufacturing_3d_printing",        "title": "2.2 Additive Manufacturing / 3D Printing",        "question_type_id": 3, "node_type": "group", "parent_key": "production_operations", "order": 2 },
+    { "key": "assembly_technicians_operators",            "title": "2.3 Assembly / Technicians / Operators",          "question_type_id": 3, "node_type": "group", "parent_key": "production_operations", "order": 3 },
+    { "key": "warehouse_inventory_logistics",             "title": "2.4 Warehouse / Inventory / Logistics",           "question_type_id": 3, "node_type": "group", "parent_key": "production_operations", "order": 4 },
+    { "key": "operations_management_production_context", "title": "2.5 Operations Management (Production Context)",   "question_type_id": 3, "node_type": "group", "parent_key": "production_operations", "order": 5 },
+
+    { "key": "production_quality_control",   "title": "3.1 Production Quality Control",     "question_type_id": 3, "node_type": "group", "parent_key": "qa_vtk_quality_control", "order": 1 },
+    { "key": "rd_product_qa",                "title": "3.2 R&D / Product QA",               "question_type_id": 3, "node_type": "group", "parent_key": "qa_vtk_quality_control", "order": 2 },
+    { "key": "testing_validation_operations","title": "3.3 Testing & Validation Operations", "question_type_id": 3, "node_type": "group", "parent_key": "qa_vtk_quality_control", "order": 3 },
+
+    { "key": "procurement_supply_chain",  "title": "4.1 Procurement & Supply Chain",    "question_type_id": 3, "node_type": "group", "parent_key": "go_to_market_corporate", "order": 1 },
+    { "key": "sales_business_development","title": "4.2 Sales & Business Development",  "question_type_id": 3, "node_type": "group", "parent_key": "go_to_market_corporate", "order": 2 },
+    { "key": "marketing_communications",  "title": "4.3 Marketing / Communications",    "question_type_id": 3, "node_type": "group", "parent_key": "go_to_market_corporate", "order": 3 },
+    { "key": "grants_fundraising_tenders","title": "4.4 Grants / Fundraising / Tenders","question_type_id": 3, "node_type": "group", "parent_key": "go_to_market_corporate", "order": 4 },
+    { "key": "corporate_operations",      "title": "4.5 Corporate Operations",           "question_type_id": 3, "node_type": "group", "parent_key": "go_to_market_corporate", "order": 5 },
+
+    { "key": "people_talent",            "title": "5.1 People & Talent",           "question_type_id": 3, "node_type": "group", "parent_key": "people_operations", "order": 1 },
+    { "key": "finance_accounting",       "title": "5.2 Finance & Accounting",      "question_type_id": 3, "node_type": "group", "parent_key": "people_operations", "order": 2 },
+    { "key": "legal_compliance",         "title": "5.3 Legal & Compliance",        "question_type_id": 3, "node_type": "group", "parent_key": "people_operations", "order": 3 },
+    { "key": "operations_administration","title": "5.4 Operations / Administration","question_type_id": 3, "node_type": "group", "parent_key": "people_operations", "order": 4 },
+    { "key": "training_instructors",     "title": "5.5 Training / Instructors",    "question_type_id": 3, "node_type": "group", "parent_key": "people_operations", "order": 5 },
+
+    { "key": "head_of_engineering",   "title": "Head of Engineering",   "question_type_id": 4, "node_type": "role", "parent_key": "eng_mgmt", "order": 1 },
+    { "key": "engineering_manager",   "title": "Engineering Manager",   "question_type_id": 4, "node_type": "role", "parent_key": "eng_mgmt", "order": 2 },
+
+    { "key": "engineering_lead_tech_lead_miltech", "title": "Engineering Lead / Tech Lead (MilTech)", "question_type_id": 4, "node_type": "role", "parent_key": "technical_leadership_team_level", "order": 1 },
+
+    { "key": "chief_architect_system_architect", "title": "Chief Architect / System Architect", "question_type_id": 4, "node_type": "role", "parent_key": "architecture_system_ownership", "order": 1 },
+
+    { "key": "lead_backend_developer",           "title": "Lead Backend Developer",              "question_type_id": 4, "node_type": "role", "parent_key": "lead_engineers_senior_ic", "order": 1 },
+    { "key": "lead_cpp_engineer_hw_sw",          "title": "Lead C++ Engineer (Hardware & Software)", "question_type_id": 4, "node_type": "role", "parent_key": "lead_engineers_senior_ic", "order": 2 },
+    { "key": "lead_cpp_computer_vision_engineer","title": "Lead C++ / Computer Vision Engineer", "question_type_id": 4, "node_type": "role", "parent_key": "lead_engineers_senior_ic", "order": 3 },
+
+    { "key": "backend_application_engineer", "title": "Backend / Application Engineer", "question_type_id": 4, "node_type": "role", "parent_key": "backend_application_engineering", "order": 1 },
+
+    { "key": "frontend_fullstack_engineer_internal_sw", "title": "Frontend / Full Stack Engineer (Internal Software)", "question_type_id": 4, "node_type": "role", "parent_key": "frontend_fullstack_internal_software", "order": 1 },
+
+    { "key": "systems_linux_software_engineer", "title": "Systems / Linux Software Engineer", "question_type_id": 4, "node_type": "role", "parent_key": "systems_linux_software", "order": 1 },
+
+    { "key": "embedded_linux_engineer",          "title": "Embedded Linux Engineer",               "question_type_id": 4, "node_type": "role", "parent_key": "embedded_firmware_engineering", "order": 1 },
+    { "key": "embedded_core_engineer_mcu",       "title": "Embedded Core Engineer (MCU / Firmware)","question_type_id": 4, "node_type": "role", "parent_key": "embedded_firmware_engineering", "order": 2 },
+    { "key": "autopilot_flight_stack_engineer",  "title": "Autopilot / Flight Stack Engineer",     "question_type_id": 4, "node_type": "role", "parent_key": "embedded_firmware_engineering", "order": 3 },
+    { "key": "motor_control_engineer_foc_esc",   "title": "Motor Control Engineer (FOC / ESC)",    "question_type_id": 4, "node_type": "role", "parent_key": "embedded_firmware_engineering", "order": 4 },
+    { "key": "embedded_video_engineer",          "title": "Embedded Video Engineer",               "question_type_id": 4, "node_type": "role", "parent_key": "embedded_firmware_engineering", "order": 5 },
+
+    { "key": "hardware_engineer",            "title": "Hardware Engineer",             "question_type_id": 4, "node_type": "role", "parent_key": "hardware_electronics", "order": 1 },
+    { "key": "hardware_engineer_rd",         "title": "Hardware Engineer (R&D)",       "question_type_id": 4, "node_type": "role", "parent_key": "hardware_electronics", "order": 2 },
+    { "key": "hardware_engineer_uav",        "title": "Hardware Engineer (UAV)",       "question_type_id": 4, "node_type": "role", "parent_key": "hardware_electronics", "order": 3 },
+    { "key": "hardware_engineer_integration","title": "Hardware Engineer (Integration)","question_type_id": 4, "node_type": "role", "parent_key": "hardware_electronics", "order": 4 },
+
+    { "key": "pcb_design_engineer",        "title": "PCB Design Engineer",         "question_type_id": 4, "node_type": "role", "parent_key": "pcb_rf_fpga", "order": 1 },
+    { "key": "ecad_engineer",              "title": "ECAD Engineer",                "question_type_id": 4, "node_type": "role", "parent_key": "pcb_rf_fpga", "order": 2 },
+    { "key": "fpga_engineer",              "title": "FPGA Engineer",                "question_type_id": 4, "node_type": "role", "parent_key": "pcb_rf_fpga", "order": 3 },
+    { "key": "rf_engineer",                "title": "RF Engineer",                  "question_type_id": 4, "node_type": "role", "parent_key": "pcb_rf_fpga", "order": 4 },
+    { "key": "power_electronics_engineer", "title": "Power Electronics Engineer",   "question_type_id": 4, "node_type": "role", "parent_key": "pcb_rf_fpga", "order": 5 },
+    { "key": "antenna_engineer",           "title": "Antenna Engineer",             "question_type_id": 4, "node_type": "role", "parent_key": "pcb_rf_fpga", "order": 6 },
+
+    { "key": "cad_engineer",                  "title": "CAD Engineer",                          "question_type_id": 4, "node_type": "role", "parent_key": "mechanical_cad_industrial_aviation_design", "order": 1 },
+    { "key": "industrial_product_designer_rd","title": "Industrial / Product Designer (R&D)",   "question_type_id": 4, "node_type": "role", "parent_key": "mechanical_cad_industrial_aviation_design", "order": 2 },
+    { "key": "aviation_uav_design_engineer",  "title": "Aviation / UAV Design Engineer",        "question_type_id": 4, "node_type": "role", "parent_key": "mechanical_cad_industrial_aviation_design", "order": 3 },
+    { "key": "prototyping_process_engineer",  "title": "Prototyping / Process Engineer",         "question_type_id": 4, "node_type": "role", "parent_key": "mechanical_cad_industrial_aviation_design", "order": 4 },
+
+    { "key": "robotics_engineer",                       "title": "Robotics Engineer",                                         "question_type_id": 4, "node_type": "role", "parent_key": "robotics_uav_ugv_platform_engineering", "order": 1 },
+    { "key": "robotics_engineer_autonomous_uav",        "title": "Robotics Engineer (Autonomous UAV)",                        "question_type_id": 4, "node_type": "role", "parent_key": "robotics_uav_ugv_platform_engineering", "order": 2 },
+    { "key": "uav_engineer_uav_systems",                "title": "UAV Engineer (UAV Systems)",                                "question_type_id": 4, "node_type": "role", "parent_key": "robotics_uav_ugv_platform_engineering", "order": 3 },
+    { "key": "uav_rd_engineer",                         "title": "UAV R&D Engineer",                                          "question_type_id": 4, "node_type": "role", "parent_key": "robotics_uav_ugv_platform_engineering", "order": 4 },
+    { "key": "field_engineer_robotic_integration",      "title": "Field Engineer (Robotic Systems Integration & Testing)",    "question_type_id": 4, "node_type": "role", "parent_key": "robotics_uav_ugv_platform_engineering", "order": 5 },
+
+    { "key": "gnc_control_engineer",       "title": "GNC / Control Engineer",        "question_type_id": 4, "node_type": "role", "parent_key": "control_navigation", "order": 1 },
+    { "key": "computer_vision_engineer",   "title": "Computer Vision Engineer",      "question_type_id": 4, "node_type": "role", "parent_key": "computer_vision",    "order": 1 },
+    { "key": "ml_deep_learning_engineer",  "title": "ML / Deep Learning Engineer",   "question_type_id": 4, "node_type": "role", "parent_key": "machine_learning",   "order": 1 },
+    { "key": "embedded_ml_edge_ai_engineer","title": "Embedded ML / Edge AI Engineer","question_type_id": 4, "node_type": "role", "parent_key": "embedded_ai",        "order": 1 },
+
+    { "key": "integration_engineer",                   "title": "Integration Engineer",                               "question_type_id": 4, "node_type": "role", "parent_key": "systems_integration_field_test_validation", "order": 1 },
+    { "key": "field_test_validation_engineer",         "title": "Field Test / Validation Engineer",                   "question_type_id": 4, "node_type": "role", "parent_key": "systems_integration_field_test_validation", "order": 2 },
+    { "key": "flight_data_analyst_reporting_engineer", "title": "Flight Data Analyst / Flight Data Reporting Engineer","question_type_id": 4, "node_type": "role", "parent_key": "systems_integration_field_test_validation", "order": 3 },
+
+    { "key": "qa_engineer",                           "title": "QA Engineer",                                    "question_type_id": 4, "node_type": "role", "parent_key": "qa_test_engineering", "order": 1 },
+    { "key": "manual_qa_engineer",                    "title": "Manual QA Engineer",                             "question_type_id": 4, "node_type": "role", "parent_key": "qa_test_engineering", "order": 2 },
+    { "key": "qa_engineer_embedded_uav",              "title": "QA Engineer (Embedded / UAV)",                   "question_type_id": 4, "node_type": "role", "parent_key": "qa_test_engineering", "order": 3 },
+    { "key": "embedded_hw_qa_lead",                   "title": "Embedded Systems (Hardware) QA / Embedded QA Lead","question_type_id": 4, "node_type": "role", "parent_key": "qa_test_engineering", "order": 4 },
+
+    { "key": "simulation_engineer", "title": "Simulation Engineer", "question_type_id": 4, "node_type": "role", "parent_key": "simulation_modeling_visualization_rd", "order": 1 },
+
+    { "key": "devops_engineer",                      "title": "DevOps Engineer",                                      "question_type_id": 4, "node_type": "role", "parent_key": "devops_infrastructure_security_rd", "order": 1 },
+    { "key": "devsecops_engineer",                   "title": "DevSecOps Engineer",                                   "question_type_id": 4, "node_type": "role", "parent_key": "devops_infrastructure_security_rd", "order": 2 },
+    { "key": "infrastructure_systems_engineer_rd",   "title": "Infrastructure / Systems Engineer (R&D)",              "question_type_id": 4, "node_type": "role", "parent_key": "devops_infrastructure_security_rd", "order": 3 },
+    { "key": "cloud_security_engineer",              "title": "Cloud & Security Engineer",                            "question_type_id": 4, "node_type": "role", "parent_key": "devops_infrastructure_security_rd", "order": 4 },
+    { "key": "cybersecurity_engineer_embedded",      "title": "Cybersecurity Engineer (Embedded / Connected Systems)","question_type_id": 4, "node_type": "role", "parent_key": "devops_infrastructure_security_rd", "order": 5 },
+
+    { "key": "technical_writer",               "title": "Technical Writer",                       "question_type_id": 4, "node_type": "role", "parent_key": "technical_writing_documentation_engineering_ops", "order": 1 },
+    { "key": "technical_writer_rd_miltech",    "title": "Technical Writer (R&D / Military Tech)", "question_type_id": 4, "node_type": "role", "parent_key": "technical_writing_documentation_engineering_ops", "order": 2 },
+    { "key": "technical_documentation_engineer","title": "Technical Documentation Engineer",      "question_type_id": 4, "node_type": "role", "parent_key": "technical_writing_documentation_engineering_ops", "order": 3 },
+
+    { "key": "product_manager_defense_miltech",    "title": "Product Manager (Defense / MilTech)",     "question_type_id": 4, "node_type": "role", "parent_key": "product_management", "order": 1 },
+    { "key": "technical_hardware_product_manager", "title": "Technical / Hardware Product Manager",    "question_type_id": 4, "node_type": "role", "parent_key": "product_management", "order": 2 },
+    { "key": "product_owner_delivery_focused",     "title": "Product Owner (Delivery-focused)",        "question_type_id": 4, "node_type": "role", "parent_key": "product_management", "order": 3 },
+
+    { "key": "project_manager",  "title": "Project Manager",  "question_type_id": 4, "node_type": "role", "parent_key": "project_program_management", "order": 1 },
+    { "key": "program_manager",  "title": "Program Manager",  "question_type_id": 4, "node_type": "role", "parent_key": "project_program_management", "order": 2 },
+    { "key": "delivery_manager", "title": "Delivery Manager", "question_type_id": 4, "node_type": "role", "parent_key": "project_program_management", "order": 3 },
+
+    { "key": "business_analyst", "title": "Business Analyst", "question_type_id": 4, "node_type": "role", "parent_key": "business_system_analysis", "order": 1 },
+    { "key": "system_analyst",   "title": "System Analyst",   "question_type_id": 4, "node_type": "role", "parent_key": "business_system_analysis", "order": 2 },
+    { "key": "product_analyst",  "title": "Product Analyst",  "question_type_id": 4, "node_type": "role", "parent_key": "business_system_analysis", "order": 3 },
+
+    { "key": "manufacturing_production_engineer",      "title": "Manufacturing / Production Engineer",     "question_type_id": 4, "node_type": "role", "parent_key": "manufacturing_production_engineering", "order": 1 },
+    { "key": "production_manager_head_of_production",  "title": "Production Manager / Head of Production", "question_type_id": 4, "node_type": "role", "parent_key": "manufacturing_production_engineering", "order": 2 },
+
+    { "key": "additive_manufacturing_3d_printing_engineer", "title": "Additive Manufacturing Engineer / 3D Printing Engineer", "question_type_id": 4, "node_type": "role", "parent_key": "additive_manufacturing_3d_printing", "order": 1 },
+
+    { "key": "assembly_technician_production_operator", "title": "Assembly Technician / Production Operator", "question_type_id": 4, "node_type": "role", "parent_key": "assembly_technicians_operators", "order": 1 },
+
+    { "key": "warehouse_inventory_specialist", "title": "Warehouse / Inventory Specialist", "question_type_id": 4, "node_type": "role", "parent_key": "warehouse_inventory_logistics", "order": 1 },
+
+    { "key": "operations_manager_production", "title": "Operations Manager (Production)", "question_type_id": 4, "node_type": "role", "parent_key": "operations_management_production_context", "order": 1 },
+
+    { "key": "quality_control_inspector_vtk", "title": "Quality Control Inspector (VTK)", "question_type_id": 4, "node_type": "role", "parent_key": "production_quality_control", "order": 1 },
+
+    { "key": "qa_engineer_rd",             "title": "QA Engineer",                     "question_type_id": 4, "node_type": "role", "parent_key": "rd_product_qa", "order": 1 },
+    { "key": "qa_lead_quality_assurance",  "title": "QA Lead / Quality Assurance Lead","question_type_id": 4, "node_type": "role", "parent_key": "rd_product_qa", "order": 2 },
+
+    { "key": "test_technician_test_operator", "title": "Test Technician / Test Operator", "question_type_id": 4, "node_type": "role", "parent_key": "testing_validation_operations", "order": 1 },
+
+    { "key": "procurement_supply_chain_specialist", "title": "Procurement / Supply Chain Specialist", "question_type_id": 4, "node_type": "role", "parent_key": "procurement_supply_chain", "order": 1 },
+
+    { "key": "sales_manager_biz_dev_defense", "title": "Sales Manager / Business Development Manager (Defense)", "question_type_id": 4, "node_type": "role", "parent_key": "sales_business_development", "order": 1 },
+
+    { "key": "marketing_communications_manager", "title": "Marketing / Communications Manager", "question_type_id": 4, "node_type": "role", "parent_key": "marketing_communications", "order": 1 },
+
+    { "key": "grant_tender_manager", "title": "Grant / Tender Manager", "question_type_id": 4, "node_type": "role", "parent_key": "grants_fundraising_tenders", "order": 1 },
+
+    { "key": "corporate_operations_admin_manager", "title": "Corporate Operations / Administrative Manager", "question_type_id": 4, "node_type": "role", "parent_key": "corporate_operations", "order": 1 },
+
+    { "key": "recruiter_talent_acquisition", "title": "Recruiter / Talent Acquisition Specialist", "question_type_id": 4, "node_type": "role", "parent_key": "people_talent", "order": 1 },
+    { "key": "hr_manager_people_partner",    "title": "HR Manager / People Partner",               "question_type_id": 4, "node_type": "role", "parent_key": "people_talent", "order": 2 },
+
+    { "key": "finance_accounting_specialist", "title": "Finance / Accounting Specialist", "question_type_id": 4, "node_type": "role", "parent_key": "finance_accounting", "order": 1 },
+
+    { "key": "legal_counsel_compliance_specialist", "title": "Legal Counsel / Compliance Specialist", "question_type_id": 4, "node_type": "role", "parent_key": "legal_compliance", "order": 1 },
+
+    { "key": "operations_administrative_manager", "title": "Operations / Administrative Manager", "question_type_id": 4, "node_type": "role", "parent_key": "operations_administration", "order": 1 },
+
+    { "key": "training_instructor_technical_trainer", "title": "Training Instructor / Technical Trainer", "question_type_id": 4, "node_type": "role", "parent_key": "training_instructors", "order": 1 }
+
+  ]
+}
