@@ -37,4 +37,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::put('/user', [\App\Http\Controllers\Api\User\UserController::class, 'update']);
 });
 
+Route::post('/subscribers', [\App\Http\Controllers\Api\Subscriber\SubscriberController::class, 'store']);
+
 Route::get('/check', [LifeCheckController::class, 'check']);

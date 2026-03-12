@@ -15,13 +15,13 @@ use App\Http\Controllers\PollController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
-
-Route::get('/poll/{id}/finished', [PollController::class, 'finished']);
-
-Route::get('/poll/{id}', [PollController::class, 'show']);
+//Route::get('/', [HomeController::class, 'index'])->name('home');
+//
+//Route::get('/login', [\App\Http\Controllers\AuthController::class, 'login'])->name('login');
+//
+//Route::get('/poll/{id}/finished', [PollController::class, 'finished']);
+//
+//Route::get('/poll/{id}', [PollController::class, 'show']);
 
 Route::post('/logout', [\App\Http\Controllers\Api\AuthController::class, 'logout']);
 
