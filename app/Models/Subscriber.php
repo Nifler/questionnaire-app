@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Subscriber extends Model
 {
+    public $timestamps = false;
+
+
     protected $fillable = [
         'email',
         'report_sent',
